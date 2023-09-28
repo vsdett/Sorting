@@ -1,0 +1,46 @@
+//choosing last element as pivot
+//Shift all the smaller elements  than pivot to its left side and  bigger to its right
+public class QuickSort
+{
+    public static int partition(int arr[],int str,int end)
+    {
+        int temp=0;
+        int i=str-1;
+        int pivot=arr[end];
+        for(int j=str;j<=end-1;j++)
+        {
+            if(arr[j]<pivot)
+        {
+            i++;
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+            
+        }
+        }
+            i++;
+            temp=arr[i];
+            arr[i]=arr[end];
+            arr[end]=temp;
+            return i;
+    }
+    public static void quicksort(int[] arr,int str,int end)
+    {
+        if(str<end) //till there are atleast 2 elements
+        {int pivot=partition(arr, str, end);
+        quicksort(arr,str,pivot-1);
+        quicksort(arr,pivot+1,end);
+            
+        }
+        return;
+    }
+	public static void main(String[] args) {
+		int arr[]={99,19,29,69,29,119,4};
+		quicksort(arr,0,arr.length-1);
+		for(int i:arr)       //shortcut for loop
+		System.out.print(i+" ");
+		//Time complexity
+		//Best  and average  case= O(n log n)
+		//Worst case O(n*n)  if already sorted
+	}
+}
